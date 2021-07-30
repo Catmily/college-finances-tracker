@@ -1,0 +1,48 @@
+@import "~bootstrap/scss/bootstrap";
+
+@mixin shadow {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+.mainContainer {
+  @include shadow;
+}
+
+
+
+.money {
+  display: inline-block;
+}
+
+nav.navbar-custom {
+  background-color: #8733cc;
+}
+
+$mynewcolor: #6843a3;
+
+.btn-primary {
+  @include button-variant($mynewcolor, darken($mynewcolor, 7.5%), darken($mynewcolor, 10%), lighten($mynewcolor,5%), lighten($mynewcolor, 10%), darken($mynewcolor,30%));
+  color: #fafafa;
+}
+
+.btn-outline-primary {
+  @include button-outline-variant($mynewcolor, #222222, lighten($mynewcolor,5%), $mynewcolor)
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  color: #fafafa;
+}
+
+h1.WelcomeUser {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+div.container {
+
+}
+
+
