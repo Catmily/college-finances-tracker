@@ -11,10 +11,11 @@ export type EventHandlerProps = {
 }
 
 export type NormalProps = {
+    actionButton: (person: string) => void;
     inputText: string;
 }
 
-export const Input = (props :  NormalProps) => {
+export const InputWithButton = (props :  NormalProps) => {
     const [input, setInput] = useState<string>("");
 
     return (
@@ -26,6 +27,7 @@ export const Input = (props :  NormalProps) => {
                 aria-describedby="basic-addon1"
                 onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setInput(event.target.value)}
             />
+            <Button className={"addButton"} onClick={() => props.actionButton(input)}>Add {props.inputText}</Button>
         </InputGroup>
     )
 }

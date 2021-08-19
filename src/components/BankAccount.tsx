@@ -1,10 +1,12 @@
 import {Money} from "./Money";
 import Container from "react-bootstrap/Container";
-import {Input} from "./Input";
+import {InputWithButton} from "./InputWithButton";
 import React, {useState} from "react";
-import {Button} from "bootstrap-react";
+import {Button} from "react-bootstrap";
 import {ButtonToolbar, Col, Row} from "react-bootstrap";
 import {CartesianGrid, Line, Tooltip, XAxis, LineChart, ResponsiveContainer} from "recharts";
+import {AddAccountButton} from "./AddAccountButton";
+import {CloseAccountButton} from "./CloseAccountButton";
 
 export const BankAccount = () => {
     const [accounts, setAccounts] = useState<string[]>([]);
@@ -14,12 +16,24 @@ export const BankAccount = () => {
         setAccounts([...accounts, account]);
     }
 
+    function removeAccount (account : string) {
+        for (let i=0; i<accounts.length; i++)
+        {
+            if (accounts[i] == account)
+            {
+                accounts.splice(i, 1);
+            }
+        }
+        setAccounts([...accounts]);
+    }
+
     return (
+
         <Container>
+            <>
             <div className={"mainContainer p-3 mt-3"}>
                 <h1>Welcome, Qamar!</h1>
                 <p>Thank you for choosing Qamarium Budgeting as your software of choice.</p>
-                <Input actionButton={addAccounts} inputText={"Account Name"}/>
             </div>
 
             <div className={"mainContainer p-3 mt-3"}>
@@ -56,11 +70,15 @@ export const BankAccount = () => {
                 </Row>
             </div>
                 {
-                    accounts.map(p => (<Money bankName={p} isStatement={true} bankAmount={54.34}/> ))
+                    accounts.map(p => (<Money bankName={p} bankAmount={54.34}/> ))
                 }
-                  <Button className={"btn btn-primary btn-block me-2 mt-3"}>Add a new Account</Button>
-                  <Button className={"btn btn-primary btn-block me-2 mt-3"}>Close an Account</Button>
 
+
+                  <AddAccountButton addAccounts={addAccounts}/>
+
+            {accounts.length ?
+                    <CloseAccountButton bankAccountNames={accounts} actionButton={removeAccount}/> : ""}
+                </>
         </Container>
 
 

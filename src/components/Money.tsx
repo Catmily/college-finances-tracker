@@ -4,12 +4,11 @@ import fs from 'fs';
 import { currencies } from './CurrencyTranslations';
 import { CashMoney } from "./CashMoney";
 import {Button, Col, Row} from "react-bootstrap";
-import {Input} from "./Input";
+import {InputWithButton} from "./InputWithButton";
 import {getDisplay} from "./AuxillaryFunctions";
 
 export type Props = {
     bankName: string;
-    isStatement: boolean;
     bankAmount: number;
 }
 
@@ -19,7 +18,6 @@ export const Money = (props : Props) => {
     const [amount, setAmount] = useState<number>(props.bankAmount);
     const [brokenDown, setBrokenDown] = useState<number[]>([]);
     const [currency, setCurrency] = useState<string>("GBP");
-    const [isStatement, setIsStatement] = useState<boolean>(props.isStatement);
 
     let availableCurrency = {};
 
@@ -33,36 +31,24 @@ export const Money = (props : Props) => {
         <>
         <Container className= "p-0 m-0 p-3 mt-2 mb-4 mainContainer">
                 <Row>
-                    <Input actionButton={setDisplay} inputText={props.bankName}/>
+                    <InputWithButton actionButton={setDisplay} inputText={props.bankName}/>
 
-                    <Col>
+                    <Col xs={3}>
                         <h2>{props.bankName}</h2>
                         <h4>{amount} {currency}</h4>
                     </Col>
-                    <Col>
-                        <div className={"d-grid gap-2 "}>
-                            <Button className={"btn btn-primary btn-block"}>Transfer Money</Button>
-                            <Button className={"btn btn-primary btn-block"}>Record a Transaction</Button>
-
-                            {isStatement &&
-
-                                    <Button className={"btn btn-primary btn-block"}>View your Statement</Button>
-
-                            }
-
-                        </div>
+                    <Col className={"pt-3 text-end"}>
+                        {
+                            brokenDown.map(p => (
+                                <CashMoney brokenDown={p} currency={currency}/>
+                            ))
+                        }
                     </Col>
 
 
                 </Row>
 
-                <Col className={"pt-3"}>
-                    {
-                        brokenDown.map(p => (
-                            <CashMoney brokenDown={p} currency={currency}/>
-                        ))
-                    }
-                </Col>
+
 
         </Container>
         </>

@@ -34,13 +34,16 @@ export const Transaction = (props: Props) => {
     return (
         <Container className= "p-0 m-0 p-3 mainContainer">
             <Row className="align-items-center">
-                <Col  xl={4}>
+                <Col  xs={1}>
                     <p>{transactionDate}</p>
                 </Col>
-                <Col>
-                    <h4>{transactionName}</h4>
+                <Col xs={2}>
+                    <p>{transactionCategory}</p>
                 </Col>
-                <Col className={"text-end "}>
+                <Col xl={6}>
+                    <p className="bold">{transactionName}</p>
+                </Col>
+                <Col className={"text-end "} xs={2}>
                     <h4>{transactionPrice} {props.currency}</h4>
                 </Col>
                 <Col className={"text-end "} xs={1}>

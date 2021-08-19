@@ -15,11 +15,11 @@ export const IncomeOutgoingsMoney = (props: Props) => {
 
     return (
         <>
-        <Money bankName={account} isStatement={false} bankAmount={0.00}/>
+        <Money bankName={account} bankAmount={0.00}/>
             <h2>Today</h2>
-            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={123.23} currency={"GBP"} cat={"Shopping"}/>
-            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={123.23} currency={"GBP"} cat={"Shopping"}/>
-            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={123.23} currency={"GBP"} cat={"Shopping"}/>
+            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={12300.23} currency={"GBP"} cat={"ONEOFF-IN"}/>
+            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={123.23} currency={"GBP"} cat={"ONEOFF-IN"}/>
+            <Transaction name={"Argos"} date={"23/12/2021"} description={"A simple transaction"} price={123.23} currency={"GBP"} cat={"ONEOFF-IN"}/>
 
         </>
     )
